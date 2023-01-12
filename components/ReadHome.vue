@@ -20,7 +20,6 @@
             <div class="" v-if="movieList">
                 <swiperAnime />
             </div>
-
             <div class="" v-if="movieList">
                 <swiperAnime />
             </div>
@@ -39,7 +38,7 @@
             </div>
         </div>
         <div class="movie-not-found" v-else>
-            <span v-show="!loadingList">ไม่พบหนัง</span>
+            <span v-show="!loadingList">ไม่พบอนิเมะ</span>
             <div class="loader-container" v-show="loadingList">
                 <nuxt-img format="webp" src="/loader.png" alt="loader" />
             </div>

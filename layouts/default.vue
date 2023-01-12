@@ -10,12 +10,12 @@
             <!-- <Poster /> -->
         </b-container>
         <!-- <div class="full-category-line">
-            <nuxt-link to="/" class="cat-btn active">หนังยอดนิยม</nuxt-link>
-            <nuxt-link to="/movie/category/action" class="cat-btn">หนังแอคชั่น</nuxt-link>
-            <nuxt-link to="/movie/category/comedy" class="cat-btn">หนังตลก</nuxt-link>
-            <nuxt-link to="/movie/category/drama" class="cat-btn">หนังดราม่า</nuxt-link>
-            <nuxt-link to="/movie/category/horror" class="cat-btn">หนังสยองขวัญ</nuxt-link>
-            <nuxt-link to="/movie/category/adventure" class="cat-btn">หนังผจญภัย</nuxt-link>
+            <nuxt-link to="/" class="cat-btn active">อนิเมะยอดนิยม</nuxt-link>
+            <nuxt-link to="/movie/category/action" class="cat-btn">อนิเมะแอคชั่น</nuxt-link>
+            <nuxt-link to="/movie/category/comedy" class="cat-btn">อนิเมะตลก</nuxt-link>
+            <nuxt-link to="/movie/category/drama" class="cat-btn">อนิเมะดราม่า</nuxt-link>
+            <nuxt-link to="/movie/category/horror" class="cat-btn">อนิเมะสยองขวัญ</nuxt-link>
+            <nuxt-link to="/movie/category/adventure" class="cat-btn">อนิเมะผจญภัย</nuxt-link>
         </div> -->
         <b-container>
             <b-row>
@@ -58,7 +58,7 @@ export default {
                 },
                 {
                     name: "keywords",
-                    content: ["ดูหนัง", "ดูหนังออนไลน์", "ดูซีรี่ย์"],
+                    content: ["ดูอนิเมะ", "ดูอนิเมะออนไลน์", "ดูซีรี่ย์"],
                 },
                 {
                     property: "og:title",
@@ -114,7 +114,7 @@ export default {
     mounted() {},
     methods: {
         async getMenuMovies() {
-            const data = await this.$axios.$get("movie/listtypeandcate");
+            const data = await this.$axios.$get("anime/listtypeandcate");
             if (data.code == 200) {
                 this.menuType = data.result.Listdata_type;
                 this.menuCategory = data.result.Listdata_cate;

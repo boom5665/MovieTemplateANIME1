@@ -27,7 +27,7 @@
             <div class="popup-content">
                 <!-- <div class="text-right"><b-icon-x-circle-fill class="popup-close-btn" @click="showRequestPopup = false" /></div> -->
                 <div class="tab-btn-list">
-                    <div class="tab-btn" @click="activeTab = 0" :class="{ active: activeTab == 0 }">ขอหนัง</div>
+                    <div class="tab-btn" @click="activeTab = 0" :class="{ active: activeTab == 0 }">ขออนิเมะ</div>
                     <div class="tab-btn" @click="activeTab = 1" :class="{ active: activeTab == 1 }">ติดต่อโฆษณา</div>
                 </div>
                 <div class="tab-content-list">
@@ -266,7 +266,7 @@ export default {
                     self.showLoader = false;
                 }, 1000);
             } else {
-                alert("กรุณาพิมชื่อหนัง");
+                alert("กรุณาพิมชื่ออนิเมะ");
             }
         },
     },

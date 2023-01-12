@@ -2,31 +2,34 @@
     <div class="player-page">
         <b-container>
             <div class="dis-between" style="display: flex; justify-content: center; margin-top: 30px">
-                <h2 class="list-title color-blue-sea">{{ _movieObj.full_name }}</h2>
+                <h2 class="list-title color-blue-sea">{{ _movieObj.full_name }} ตอนที่ {{ _ep }}</h2>
             </div>
+
             <div class="nopadding">
                 <div class="">
-                    <!-- <div class="iframe-container" style="z-index: 0;">
+                    <b-aspect aspect="16:9" class="mb-2">
+                        <div class="iframe-container" style="z-index: 0">
                             <iframe id="playervideo" :src="playerIframeUrl" allowfullscreen="allowfullscreen" style="width: 100%; height: 100%; border: 0px; overflow: hidden"></iframe>
                             <AdsVideo :_adsArray="adsVideoList" v-model="isShowAds" v-if="adsVideoList.length > 0 && isShowAds" />
-                        </div> -->
-                    <div
+                        </div>
+                    </b-aspect>
+                    <!-- <div
                         class="iframe-container"
                         style="z-index: 0; cursor: pointer; width: 100%; height: 100%; border: 0px; display: flex; position: relative; justify-content: center"
                         @click="Movie()">
                         <nuxt-img format="webp" src="/playtem.png" alt="loader" />
-                    </div>
+                    </div> -->
                 </div>
 
                 <div class="contract">
-                    <div style="display: flex; align-items: center">
+                    <nuxt-link style="display: flex; align-items: center" :to="Back()">
                         <div class="pagination-btn">&lsaquo;</div>
                         <div class="">ตอนก่อนหน้า</div>
-                    </div>
-                    <div style="display: flex; align-items: center">
+                    </nuxt-link>
+                    <nuxt-link style="display: flex; align-items: center" :to="Next()">
                         <div class="">ตอนถัดไป</div>
                         <div class="pagination-btn prev">&rsaquo;</div>
-                    </div>
+                    </nuxt-link>
                 </div>
                 <div class="d-flex align-items-center justify-content-between">
                     <div class="sound-container">
@@ -39,7 +42,7 @@
                         </div>
                     </div>
 
-                    <div class="btn-bot-alert" @click="showReportPopup = true">แจ้งหนังเสีย</div>
+                    <div class="btn-bot-alert" @click="showReportPopup = true">แจ้งอนิเมะเสีย</div>
                 </div>
 
                 <!-- <div class="custom-card-container mt-3" v-if="_type == 'series'"> -->
@@ -47,15 +50,16 @@
                     <div class="custom-card-header">เลือกตอน</div>
                     <div class="custom-card-content">
                         <div class="ep-list">
-                            <nuxt-link
+                            <!-- <nuxt-link
                                 :to="getEpLink(index + 1)"
                                 class="ep-row"
                                 :class="{ active: index + 1 == _ep }"
-                                v-for="(value, index) in epArray"
+                                v-for="(value, key, index) in epArray"
                                 :key="index"
                                 v-show="index + 1 != epArray.length">
-                                EP {{ index + 1 }}
-                            </nuxt-link>
+                                {{ key }}
+                            </nuxt-link> -->
+                            {{ _movieObj.player_link_main }}
                         </div>
                     </div>
                 </div>
@@ -63,7 +67,7 @@
                     <div class="popup-content">
                         <!-- <div class="text-right"><b-icon-x-circle-fill class="popup-close-btn" @click="showReportPopup = false" /></div> -->
                         <div class="tab-btn-list">
-                            <div class="tab-btn active">แจ้งหนังเสีย</div>
+                            <div class="tab-btn active">แจ้งอนิเมะเสีย</div>
                         </div>
 
                         <div class="tab-content-list">
@@ -77,11 +81,12 @@
                     </div>
                 </div>
             </div>
+
             <b-row class="bg-img">
                 <b-col cols="12" lg="4" xl="4" class="nopadding">
                     <b-container>
                         <!-- <div class="dis-between">
-                            <h2 class="list-title">หนังแนะนำ</h2>
+                            <h2 class="list-title">อนิเมะแนะนำ</h2>
                         </div>
                         <b-row style="display: grid; grid-template-columns: 1fr 1fr">
                             <b-col style="margin-bottom: 10px" cols="12" lg="12" xl="12" v-for="(value, index) in movieList" :key="index">
@@ -93,7 +98,7 @@
                             <nuxt-img loading="lazy" style="width: 90%" format="webp" :src="_movieObj.picture" :alt="_movieObj.full_name" />
                         </div>
                         <!-- <div class="preview-url">
-                            <div class="">{{ _isAV ? "ตัวอย่างหนัง:" : "" }} {{ _movieObj.full_name }}</div>
+                            <div class="">{{ _isAV ? "ตัวอย่างอนิเมะ:" : "" }} {{ _movieObj.full_name }}</div>
                             <iframe class="preview-movie" :src="previewUrl" frameborder="0" allowfullscreen></iframe>
                         </div> -->
                     </b-container>
@@ -110,6 +115,7 @@
                     </div>
                 </b-col>
             </b-row>
+
         </b-container>
         <div class="mb-2">
             <b-container>
@@ -154,7 +160,7 @@
         </div>
         <div class="" v-if="movieList.length">
             <div class="dis-between grop-head">
-                <h2 class="list-title color-blue-sea">หนังแนะนำ</h2>
+                <h2 class="list-title color-blue-sea">อนิเมะแนะนำ</h2>
             </div>
             <div class="group-content">
                 <div class="" v-if="movieList">
@@ -212,7 +218,7 @@ export default {
     data() {
         return {
             currentSound: "Main",
-            playerIframeUrl: "",
+            // playerIframeUrl: "",
             serieLinkMain: "",
             epArray: [],
             relateList: [],
@@ -228,10 +234,23 @@ export default {
         };
     },
     computed: {
-        previewUrl: function () {
-            if (this._movieObj.preview) return "https://www.youtube.com/embed/" + this._movieObj.preview + "?controls=0&rel=0";
+        epArray() {
+            if (this._movieObj.player_link_main) return JSON.parse(this._movieObj.player_link_main);
+
+            
             return "";
         },
+        // previewUrl: function () {
+        //     if (this._movieObj.preview) return "https://www.youtube.com/embed/" + this._movieObj.preview + "?controls=0&rel=0";
+        //     return "";
+        // },
+        // playerIframeUrl() {
+        //     if (this._movieObj.player_link_main) {
+        //         const linkEP = JSON.parse(this._movieObj.player_link_main);
+        //         return "https://movie.aegistrex.com/anime/api/player/" + Object.values(linkEP)[parseInt(this._ep) - 1];
+        //     }
+        //     return "";
+        // },
         catIdArray() {
             let cat = [];
             for (const key in this._movieObj.Category) {
@@ -258,13 +277,13 @@ export default {
     },
     mounted() {},
     watch: {
-        currentSound() {
-            const self = this;
-            this.playerIframeUrl = "";
-            setTimeout(() => {
-                self.setPlayerUrl();
-            }, 100);
-        },
+        // currentSound() {
+        //     const self = this;
+        //     this.playerIframeUrl = "";
+        //     setTimeout(() => {
+        //         self.setPlayerUrl();
+        //     }, 100);
+        // },
     },
     methods: {
         showMovie() {
@@ -273,22 +292,8 @@ export default {
             }
         },
         setPlayerUrl() {
-            if (this._type == "anime") {
-                if (this.currentSound == "Main") this.epArray = this._movieObj.player_series_link_main.split("!!end!!");
-                if (this.currentSound == "Backup1") this.epArray = this._movieObj.player_series_link_backup1.split("!!end!!");
-                for (let index = 0; index < this.epArray.length; index++) {
-                    const element = this.epArray[index];
-                    if (index + 1 == this._ep) this.playerIframeUrl = "https://movie.aegistrex.com/api/player/" + element.split("}}")[1];
-                }
-            } else {
-                if (this._isAV) {
-                    this.playerIframeUrl = "https://movie.aegistrex.com/anime/api/player/" + this._movieObj.player_link_main;
-                } else {
-                    if (this.currentSound == "Main") this.playerIframeUrl = "https://movie.aegistrex.com/api/player/" + this._movieObj.player_link_main;
-                    if (this.currentSound == "Backup1") this.playerIframeUrl = "https://movie.aegistrex.com/api/player/" + this._movieObj.player_link_backup1;
-                    if (this.currentSound == "Backup2") this.playerIframeUrl = "https://movie.aegistrex.com/api/player/" + this._movieObj.player_link_backup2;
-                }
-            }
+            const linkEP = JSON.parse(this._movieObj.player_link_main);
+            if (this.currentSound == "Main") this.playerIframeUrl = "https://movie.aegistrex.com/anime/api/player/" + Object.values(linkEP)[this._ep];
         },
         getRelateMovies() {
             const self = this;
@@ -305,8 +310,23 @@ export default {
                 });
         },
         getEpLink(ep) {
-            return "/" + this._type + "/" + this._id + "/" + this._slug + "/" + ep;
+            return "/anime/" + this._id + "/" + this._slug + "/" + ep;
         },
+
+        Next() {
+            var toplam = parseInt(this._ep) + 1;
+            return "/anime/" + this._id + "/" + this._slug + "/" + toplam;
+        },
+
+        Back() {
+            var toplam = parseInt(this._ep) - 1;
+            if (toplam <= 0) {
+              return "/anime/" + this._id + "/" + this._slug + "/" + this._ep;
+            } else {
+              return "/anime/" + this._id + "/" + this._slug + "/" + toplam;
+            }
+        },
+
         Movie() {
             this.$swal("", "กรุณาซื้อแพ็กเกจ", "warning");
         },
@@ -335,29 +355,6 @@ export default {
             //         }
             //     });
             this.$swal("", "กรุณาซื้อแพ็กเกจ", "warning");
-        },
-        getHotMovies() {
-            const self = this;
-            this.loadingList = true;
-            this.$axios
-                .$post("anime", {
-                    order: "ID",
-                    orderby: "DESC",
-                    types: "",
-                    category: "",
-                    year: 0,
-                    perpage: 8,
-                    page: this.currentPage,
-                    search: this._search,
-                })
-                .then(function (response) {
-                    if (response.code == 200) {
-                        // console.log(response.result);
-                        self.movieList = response.result;
-                        self.maxPage = response.page_total;
-                    }
-                    self.loadingList = false;
-                });
         },
         getMovies() {
             const self = this;

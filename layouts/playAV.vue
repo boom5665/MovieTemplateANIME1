@@ -53,7 +53,7 @@ export default {
                 },
                 {
                     name: "keywords",
-                    content: ["ดูหนัง", "ดูหนังออนไลน์", "ดูซีรี่ย์"],
+                    content: ["ดูอนิเมะ", "ดูอนิเมะออนไลน์", "ดูซีรี่ย์"],
                 },
                 {
                     property: "og:title",

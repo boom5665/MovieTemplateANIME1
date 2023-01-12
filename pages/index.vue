@@ -1,5 +1,5 @@
 <template>
-    <ReadHome _title="หนังยอดนิยม" type="movie" :_isHot="true" />
+    <ReadHome _title="อนิเมะยอดนิยม" type="movie" :_isHot="true" />
 </template>
 
 <script>

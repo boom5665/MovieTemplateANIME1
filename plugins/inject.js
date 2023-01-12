@@ -47,9 +47,9 @@ Vue.mixin({
       return "/" + val.typemovie.toLowerCase() + "/type/" + val.name_slug;
     },
     getPlayUrl(val) {
-      let url = "/" + val.typemovie.toLowerCase() + "/" + val.id + "/" + this.convertToUrlFriendly(val.full_name);
+      let friendlyName = this.convertToUrlFriendly(val.full_name) == "" ? "1" : this.convertToUrlFriendly(val.full_name);
       if (this.convertToUrlFriendly(val.full_name) == "") url += "1";
-      return val.typemovie == "series" ? url + "/1" : url;
+      return "/anime/" + val.id + "/" + friendlyName + "/1";
     },
     convertToUrlFriendly(val) {
       const a = "àáâäæãåāăąçćčđďèéêëēėęěğǵḧîïíīįìıİłḿñńǹňôöòóœøōõőṕŕřßśšşșťțûüùúūǘůűųẃẍÿýžźż·/_,:;";

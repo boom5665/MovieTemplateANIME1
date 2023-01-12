@@ -1,5 +1,5 @@
 <template>
-    <MovieList _title="หนัง AV" :_isAV="true" />
+    <MovieList _title="อนิเมะ AV" :_isAV="true" />
 </template>
 
 <script>

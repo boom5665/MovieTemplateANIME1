@@ -6,7 +6,7 @@
 
 <script>
 export default {
-    name: "animeCategorySlug",
+    name: "categorySlug",
     async asyncData({ params, $axios }) {
         const res = await $axios.$get("anime/listcate?slug=" + params.slug);
         const typeObj = res.result[0];

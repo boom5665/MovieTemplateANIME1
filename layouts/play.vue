@@ -54,7 +54,7 @@ export default {
                 },
                 {
                     name: "keywords",
-                    content: ["ดูหนัง", "ดูหนังออนไลน์", "ดูซีรี่ย์"],
+                    content: ["ดูอนิเมะ", "ดูอนิเมะออนไลน์", "ดูซีรี่ย์"],
                 },
                 {
                     property: "og:title",
@@ -110,9 +110,7 @@ export default {
     mounted() {},
     methods: {
         async getMenuMovies() {
-            let url = "movie";
-            if (this._isAV) url = "anime";
-            const data = await this.$axios.$get(url + "/listtypeandcate");
+            const data = await this.$axios.$get("anime/listtypeandcate");
             if (data.code == 200) {
                 this.menuType = data.result.Listdata_type;
                 this.menuCategory = data.result.Listdata_cate;
