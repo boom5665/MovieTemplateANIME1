@@ -109,20 +109,20 @@
   //     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   // }
   .ep-row {
-    background-color: rgba(32, 33, 36, 1);
+    background-color: rgb(43, 43, 59);
     // border-radius: 4px;
     text-align: center;
     padding: 4px 0;
     cursor: pointer;
 
     &.active {
-      background-color: #fff;
-      color: #000;
+      background-color: rgba(43, 31, 70, 1);
+      color: #fff;
     }
 
     &:hover {
-      background-color: #fff;
-      color: #000;
+      background-color: rgba(43, 31, 70, 1);
+      color: #fff;
     }
   }
 }

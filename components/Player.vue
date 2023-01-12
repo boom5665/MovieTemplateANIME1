@@ -50,7 +50,7 @@
                     <div class="custom-card-header">เลือกตอน</div>
                     <div class="custom-card-content">
                         <div class="ep-list">
-                            <!-- <nuxt-link
+                            <nuxt-link
                                 :to="getEpLink(index + 1)"
                                 class="ep-row"
                                 :class="{ active: index + 1 == _ep }"
@@ -58,8 +58,8 @@
                                 :key="index"
                                 v-show="index + 1 != epArray.length">
                                 {{ key }}
-                            </nuxt-link> -->
-                            {{ _movieObj.player_link_main }}
+                            </nuxt-link>
+                            <!-- {{ _movieObj.player_link_main }} -->
                         </div>
                     </div>
                 </div>
@@ -220,7 +220,6 @@ export default {
             currentSound: "Main",
             // playerIframeUrl: "",
             serieLinkMain: "",
-            epArray: [],
             relateList: [],
             showReportPopup: false,
             reportDetail: "",
@@ -236,8 +235,6 @@ export default {
     computed: {
         epArray() {
             if (this._movieObj.player_link_main) return JSON.parse(this._movieObj.player_link_main);
-
-            
             return "";
         },
         // previewUrl: function () {
