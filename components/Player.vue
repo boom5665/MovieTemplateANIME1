@@ -7,18 +7,18 @@
 
             <div class="nopadding">
                 <div class="">
-                    <b-aspect aspect="16:9" class="mb-2">
+                    <!-- <b-aspect aspect="16:9" class="mb-2">
                         <div class="iframe-container" style="z-index: 0">
                             <iframe id="playervideo" :src="playerIframeUrl" allowfullscreen="allowfullscreen" style="width: 100%; height: 100%; border: 0px; overflow: hidden"></iframe>
                             <AdsVideo :_adsArray="adsVideoList" v-model="isShowAds" v-if="adsVideoList.length > 0 && isShowAds" />
                         </div>
-                    </b-aspect>
-                    <!-- <div
+                    </b-aspect> -->
+                    <div
                         class="iframe-container"
                         style="z-index: 0; cursor: pointer; width: 100%; height: 100%; border: 0px; display: flex; position: relative; justify-content: center"
                         @click="Movie()">
                         <nuxt-img format="webp" src="/playtem.png" alt="loader" />
-                    </div> -->
+                    </div>
                 </div>
 
                 <div class="contract">
