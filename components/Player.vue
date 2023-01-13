@@ -115,7 +115,6 @@
                     </div>
                 </b-col>
             </b-row>
-
         </b-container>
         <div class="mb-2">
             <b-container>
@@ -312,15 +311,22 @@ export default {
 
         Next() {
             var toplam = parseInt(this._ep) + 1;
-            return "/anime/" + this._id + "/" + this._slug + "/" + toplam;
+            var Last = this._movieObj.last_episode;
+            // console.log(toplam);
+            // console.log(Last.slice(2));
+            if (toplam > Last.slice(2)) {
+                return "/anime/" + this._id + "/" + this._slug + "/" + this._ep;
+            } else {
+                return "/anime/" + this._id + "/" + this._slug + "/" + toplam;
+            }
         },
 
         Back() {
             var toplam = parseInt(this._ep) - 1;
             if (toplam <= 0) {
-              return "/anime/" + this._id + "/" + this._slug + "/" + this._ep;
+                return "/anime/" + this._id + "/" + this._slug + "/" + this._ep;
             } else {
-              return "/anime/" + this._id + "/" + this._slug + "/" + toplam;
+                return "/anime/" + this._id + "/" + this._slug + "/" + toplam;
             }
         },
 
